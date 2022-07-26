@@ -16,31 +16,43 @@ const Normal: FC = () => {
     return isMoreThan5 ? "+" : "-";
   }, []);
   const [count, setCount] = useState(20);
-  const getNums = useCallback(() => {
-    const symbol = getSymbol();
-    let num1 = getNum();
-    let num2 = getNum();
-    if (symbol === "+") {
-      if (num1 + num2 > 10) {
-        num2 = 10 - num1;
+  const getNums = useCallback(
+    (initNum?) => {
+      const symbol = getSymbol();
+      let num1 = initNum || getNum();
+      let num2 = getNum();
+      if (symbol === "+") {
+        if (num1 + num2 > 10) {
+          num2 = 10 - num1;
+        }
+      } else if (symbol === "-") {
+        if (num1 < num2) {
+          const a = num1;
+          num1 = num2;
+          num2 = a;
+        }
       }
-    } else if (symbol === "-") {
-      if (num1 < num2) {
-        const a = num1;
-        num1 = num2;
-        num2 = a;
-      }
-    }
-    return [num1, num2, symbol];
-  }, [getSymbol]);
+      return [num1, num2, symbol];
+    },
+    [getSymbol]
+  );
   const getSubject = useCallback(() => {
     return Array.from({ length: count }).map((_, index) => {
-      const [num1, num2, symbol] = getNums();
+      const [num1, num2, symbol1] = getNums();
+      let result = 0;
+      if (symbol1 === "+") {
+        result = num1 + num2;
+      } else {
+        result = num1 - num2;
+      }
+      const [num3, num4, symbol2] = getNums(result);
       return (
         <div key={index}>
           <span className={styles.num}>{num1}</span>
-          <span className={styles.symbol}>{symbol}</span>
+          <span className={styles.symbol}>{symbol1}</span>
           <span className={styles.num}>{num2}</span>
+          <span className={styles.symbol}>{symbol2}</span>
+          <span className={styles.num}>{num4}</span>
           <span className={styles.symbol}>=</span>
           <span className={styles.result}>
             <input type="number" maxLength={2} />

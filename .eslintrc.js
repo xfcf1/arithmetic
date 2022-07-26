@@ -17,6 +17,7 @@ module.exports = {
     "jsx-a11y/anchor-is-valid": "off",
     "react/require-default-props": "off",
     "compat/compat": "off",
+    "react/no-array-index-key": "off",
   },
   parserOptions: {
     ecmaVersion: 2020,
