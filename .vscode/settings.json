@@ -1,0 +1,44 @@
+{
+  "files.associations": {
+    ".eslintrc": "jsonc",
+    ".prettierrc": "jsonc",
+    ".eslintignore": "ignore"
+  },
+
+  "javascript.validate.enable": false,
+  "javascript.format.enable": false,
+  "typescript.format.enable": false,
+
+  "search.exclude": {
+    ".git": true,
+    ".eslintcache": true,
+    ".erb/dll": true,
+    "dist": true,
+    "node_modules": true,
+    "npm-debug.log.*": true,
+    "test/**/__snapshots__": true,
+    "package-lock.json": true,
+    "*.{css,sass,scss}.d.ts": true
+  },
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint":true,
+    "source.fixAll.stylelint": true
+  },
+  "stylelint.snippet": [
+    "css",
+    "less",
+    "postcss",
+    "sass",
+    "scss"
+  ],
+  "stylelint.validate": [
+    "css",
+    "less",
+    "postcss",
+    "sass",
+    "scss"
+  ],
+  "css.validate": false,
+  "less.validate": false,
+  "scss.validate": false
+}
