@@ -1,5 +1,5 @@
 import { FC, useCallback, useMemo, useState } from "react";
-import getNum from "../../utils/getNum";
+import getNum from "@/utils/getNum";
 import styles from "./styles.module.css";
 
 enum ESymbol {
@@ -55,7 +55,7 @@ const Normal: FC = () => {
           <span className={styles.num}>{num4}</span>
           <span className={styles.symbol}>=</span>
           <span className={styles.result}>
-            <input type="number" maxLength={2} />
+            <input type="tel" maxLength={2} />
           </span>
         </div>
       );
